@@ -2,5 +2,34 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  /* text-align: center; */
+  font-family: sans-serif;
+}
+
+.search-bar {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
   text-align: center;
+}
+
+.main-container {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
