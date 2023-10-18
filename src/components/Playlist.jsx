@@ -1,4 +1,4 @@
-export default function Playlist({ playlist }) {
+export default function Playlist({ playlist, handleDeleteFromPlaylist }) {
   
   const list = playlist.map(track =>
     <div className="track-container" key={track.id}>
@@ -7,7 +7,7 @@ export default function Playlist({ playlist }) {
         <p>{track.artist} | {track.album}</p>
       </div>
       <div>
-        <button>-</button>
+        <button onClick={() => handleDeleteFromPlaylist(track.id)}>-</button>
       </div>
     </div>
     )

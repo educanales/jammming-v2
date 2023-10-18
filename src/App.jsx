@@ -27,6 +27,13 @@ function App() {
     setPlaylist([ ...playlist, ...selectedTrack ]);
   }
 
+  const handleDeleteFromPlaylist = id => {
+    const selectedTrack = playlist.filter((track) =>
+      track.id !== id
+    );
+    setPlaylist(selectedTrack);
+  }
+
   return (
     <>
       <h1>Jammming</h1>
@@ -41,6 +48,7 @@ function App() {
         />
         <Playlist 
           playlist={playlist}
+          handleDeleteFromPlaylist={handleDeleteFromPlaylist}
         />
       </div>
     </>
