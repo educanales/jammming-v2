@@ -6,9 +6,10 @@ import SearchBar from './components/SearchBar'
 
 function App() {
   const [ searchItem, setSearchItem ] = useState('');
-  const [ trackResults, setTrackResults] = useState(tracks);
+  const [ trackResults, setTrackResults ] = useState(tracks);
+  const [ playlist, setPlaylist ] = useState([]);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
     const filteredSongs = tracks.filter((track) =>
@@ -17,7 +18,14 @@ function App() {
       track.album.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setTrackResults(filteredSongs);
-  }  
+  }
+
+  const handleAddPlaylist = id => {
+    const selectedTrack = trackResults.filter((track) =>
+      track.id === id
+    );
+    setPlaylist([ ...playlist, ...selectedTrack ]);
+  }
 
   return (
     <>
@@ -29,8 +37,11 @@ function App() {
       <div className='main-container'>
         <ResultsList 
           trackResults={trackResults}
+          handleAddPlaylist={handleAddPlaylist}
         />
-        <Playlist />
+        <Playlist 
+          playlist={playlist}
+        />
       </div>
     </>
   )

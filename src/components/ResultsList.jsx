@@ -1,4 +1,4 @@
-export default function ResultsList({ trackResults }) {
+export default function ResultsList({ trackResults, handleAddPlaylist }) {
   const list = trackResults.map(track =>
     <div className='track-container' key={track.id}>
       <div>
@@ -6,13 +6,13 @@ export default function ResultsList({ trackResults }) {
         <p>{track.artist} | {track.album}</p>
       </div>
       <div>
-        <button>+</button>
+        <button onClick={() => handleAddPlaylist(track.id)}>+</button>
       </div>
     </ div>
     )
 
   return (
-    <div className='container'>
+    <div className="container">
       <h2>Results</h2>
       {list}
     </div>
