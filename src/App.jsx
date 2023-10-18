@@ -24,7 +24,9 @@ function App() {
     const selectedTrack = trackResults.filter((track) =>
       track.id === id
     );
-    setPlaylist([ ...playlist, ...selectedTrack ]);
+    if (!playlist.find(item => item.id === id)) {
+      setPlaylist([ ...playlist, ...selectedTrack ]);
+    }
   }
 
   const handleDeleteFromPlaylist = id => {
