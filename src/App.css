@@ -1,15 +1,45 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  /* text-align: center; */
+  padding: 0;
+}
+
+body {
   font-family: sans-serif;
+  background-color: #191414;
+  color: #fff;
+}
+
+button {
+  background-color: #1DB954;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  max-width: 8rem;
+  border: none;
+}
+
+button:hover {
+  color: #191414;
 }
 
 .search-bar {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  gap: 0.5rem;
+}
+
+.search-bar input {
+  border-radius: 15px;
+  width: 25rem;
+  height: 3rem;
+  padding: 0 1rem;
+}
+
+.search-bar button {
+  height: 2.8rem;
+  width: 5rem;
 }
 
 h1 {
@@ -17,9 +47,11 @@ h1 {
 }
 
 .main-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  justify-content: center;
+  margin: 1rem auto;
+  max-width: 55rem;
 }
 
 .container {
