@@ -42,7 +42,7 @@ button {
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 15px;
-  max-width: 8rem;
+  max-width: 10rem;
   border: none;
 }
 
@@ -51,7 +51,8 @@ button:hover {
 }
 
 .search-bar {
-  margin: 0 auto;
+  margin: 1rem auto;
+  margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
