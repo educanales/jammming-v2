@@ -2,16 +2,10 @@ import { useState } from "react"
 
 export default function Playlist({ playlist, handleDeleteFromPlaylist }) {
   const [ playlistName, setPlaylistName ] = useState('Playlist Name');
-  const [ showEdit, setShowEdit ] = useState(false);
-
-  const handleEdit = () => {
-    setShowEdit(!showEdit);
-  }
 
   const handleNameChange = e => {
     setPlaylistName(e.target.value);
   }
-
 
   const list = playlist.map(track =>
     <div className="track-container" key={track.id}>
@@ -20,26 +14,27 @@ export default function Playlist({ playlist, handleDeleteFromPlaylist }) {
         <p>{track.artist} | {track.album}</p>
       </div>
       <div>
-        <button onClick={() => handleDeleteFromPlaylist(track.id)}>-</button>
+        <button
+          className="round-btn"
+          onClick={() => handleDeleteFromPlaylist(track.id)}        
+        >-
+        </button>
       </div>
     </div>
     );
 
   return (
     <div className="container">
-      {showEdit ? (
-        <input 
-          className="playlist-name"
-          type="text"
-          value={playlistName}
-          onChange={handleNameChange}
-        />
-      ) : (        
-          <h2 onFocus={handleEdit}>{playlistName}</h2>
-        )
-      }
+      <input
+        className="header2"
+        type="text"
+        value={playlistName}
+        onChange={handleNameChange}
+        onFocus
+        onBlur
+      /> 
       {list}
-      <button onClick={handleEdit}>Save to Spotify</button>
+      <button className="save-btn">Save to Spotify</button>
     </div>
   )
 }

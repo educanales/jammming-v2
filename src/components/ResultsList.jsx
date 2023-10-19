@@ -6,14 +6,18 @@ export default function ResultsList({ trackResults, handleAddPlaylist }) {
         <p>{track.artist} | {track.album}</p>
       </div>
       <div>
-        <button onClick={() => handleAddPlaylist(track.id)}>+</button>
+        <button
+          className="round-btn"
+          onClick={() => handleAddPlaylist(track.id)}
+        >+
+        </button>
       </div>
     </ div>
     )
 
   return (
     <div className="container">
-      <h2>Results</h2>
+      <h2 className="header2">Results</h2>
       {list}
     </div>
   )
