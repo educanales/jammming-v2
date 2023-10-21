@@ -3,6 +3,7 @@ import './App.css'
 import Playlist from './components/Playlist'
 import ResultsList from './components/ResultsList'
 import SearchBar from './components/SearchBar'
+import Login from './components/Login'
 
 function App() {
   const [ searchItem, setSearchItem ] = useState('');
@@ -38,7 +39,8 @@ function App() {
 
   return (
     <>
-      <h1>Jammming</h1>
+      {/* <h1>Jammming</h1> */}
+      <Login />
       <SearchBar 
         value={searchItem}
         onChange={handleInputChange}

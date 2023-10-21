@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0 auto;
+}
+
+.login-btn {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  background-color: #1DB954;
+  float: right;
+  border-radius: 45px;
+}

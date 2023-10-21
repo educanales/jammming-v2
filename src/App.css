@@ -40,8 +40,8 @@ body {
 button {
   background-color: #1DB954;
   color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 15px;
+  padding: 0.5rem 2rem;
+  border-radius: 45px;
   max-width: 10rem;
   border: none;
 }
@@ -67,7 +67,6 @@ button:hover {
 
 .search-bar button {
   height: 2.8rem;
-  width: 5rem;
 }
 
 h1 {
@@ -99,6 +98,7 @@ h1 {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  padding: 0;
 }
 
 .header2 {
