@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Playlist from './components/Playlist'
 import ResultsList from './components/ResultsList'
@@ -7,19 +7,44 @@ import Login from './components/Login'
 
 function App() {
   const [ searchItem, setSearchItem ] = useState('');
-  const [ trackResults, setTrackResults ] = useState(tracks);
+  const [ trackResults, setTrackResults ] = useState([]);
   const [ playlist, setPlaylist ] = useState([]);
+  const [ token, setToken ] = useState('');
 
   const handleInputChange = e => {
     const searchTerm = e.target.value;
     setSearchItem(searchTerm);
-    const filteredSongs = tracks.filter((track) =>
-      track.artist.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      track.songName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      track.album.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setTrackResults(filteredSongs);
   }
+
+  const searchTracks = async (e) => {
+    e.preventDefault();  
+    const headers = {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };  
+    const url = new URL('https://api.spotify.com/v1/search');
+    url.searchParams.append('q', searchItem);
+    url.searchParams.append('type', 'track');  
+    try {
+        const response = await fetch(url, headers);
+        if (!response.ok) {
+            throw new Error('La solicitud no se pudo completar correctamente.');
+        }  
+        const data = await response.json();
+        const tracks = data.tracks.items.map(track => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artists[0].name,
+          album: track.album.name,
+          uri: track.uri
+        }));
+        setTrackResults(tracks);
+    } catch (error) {
+        console.error('Error al buscar:', error);
+    }
+  };
 
   const handleAddPlaylist = id => {
     const selectedTrack = trackResults.filter((track) =>
@@ -38,10 +63,10 @@ function App() {
   }
 
   return (
-    <>
-      {/* <h1>Jammming</h1> */}
-      <Login />
+    <>      
+      <Login token={token} setToken={setToken}/>
       <SearchBar 
+        searchTracks={searchTracks}
         value={searchItem}
         onChange={handleInputChange}
       />
@@ -60,11 +85,3 @@ function App() {
 }
 
 export default App
-
-const tracks = [
-  {songName: "Blind", artist: "Korn", album: "Korn", id: 1},
-  {songName: "Headup", artist: "Deftones", album: "Around the Fur", id: 2},
-  {songName: "Bloodwork", artist: "36 Crazyfists", album: "A Snow Capped Romance", id: 3},
-  {songName: "Ape Dos Mil", artist: "Glassjaw", album: "Workship and Tribute", id: 4},
-  {songName: "Chi", artist: "Korn", album: "Life is Peachy", id: 5}
-];

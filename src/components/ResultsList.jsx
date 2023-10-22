@@ -2,7 +2,7 @@ export default function ResultsList({ trackResults, handleAddPlaylist }) {
   const list = trackResults.map(track =>
     <div className='track-container' key={track.id}>
       <div>
-        <h3>{track.songName}</h3>
+        <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
       </div>
       <div>
