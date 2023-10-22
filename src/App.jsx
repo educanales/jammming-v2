@@ -70,7 +70,7 @@ function App() {
         value={searchItem}
         onChange={handleInputChange}
       />
-      <div className='main-container'>
+      <main className='main-container'>
         <ResultsList 
           trackResults={trackResults}
           handleAddPlaylist={handleAddPlaylist}
@@ -79,7 +79,7 @@ function App() {
           playlist={playlist}
           handleDeleteFromPlaylist={handleDeleteFromPlaylist}
         />
-      </div>
+      </main>
     </>
   )
 }

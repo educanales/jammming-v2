@@ -1,8 +1,8 @@
 export default function SearchBar({ value, onChange, searchTracks }) {
 
   return (
-    <section className="search-bar">
-      <form onSubmit={searchTracks}>
+    <section>
+      <form className="search-bar" onSubmit={searchTracks}>
         <input
           name="searchBar"
           type="text"

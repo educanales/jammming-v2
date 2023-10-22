@@ -25,7 +25,7 @@ export default function Login({ token, setToken }) {
   }
 
   return (
-    <nav>
+    <header>
       <h1>Jammming</h1>
       {!token ? (
         <a
@@ -37,6 +37,6 @@ export default function Login({ token, setToken }) {
       ) : (
         <button onClick={handleLogout}>Logout</button>
       )}
-    </nav>
+    </header>
   );
 }
