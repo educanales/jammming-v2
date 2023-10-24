@@ -1,8 +1,9 @@
-# React + Vite
+# Jammming
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Practice Project from Codecademy
 
-Currently, two official plugins are available:
+### Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Jammmming is a web application that allows users to log into their Spotify account, search for songs add them to a new playlist and then save them to Spotify.
+
+The goal of this project is to build a web application using knowledge of React components, passing state and requests to the Spotify API.
