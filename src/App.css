@@ -9,6 +9,11 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: sans-serif;
+  background-color: #191414;
+  color: #fff;
+  padding: 1rem 2rem;
+  /* margin: 0 auto; */
 }
 
 img, picture, video, canvas, svg {
@@ -29,20 +34,12 @@ p, h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
-body {
-  font-family: sans-serif;
-  background-color: #191414;
-  color: #fff;
-  padding: 1rem 2rem;
-
-}
-
 button {
   background-color: #1DB954;
   color: #fff;
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 45px;
-  max-width: 10rem;
+  /* max-width: 10rem; */
   border: none;
 }
 
@@ -61,7 +58,7 @@ button:hover {
 
 .search-bar input {
   border-radius: 15px;
-  width: 25rem;
+  max-width: 20rem;
   height: 3rem;
   padding: 0 1rem;
 }
@@ -109,7 +106,7 @@ h1 {
 }
 
 input.header2 {
-  box-sizing: border-box;
+  max-width: 15rem;
   background-color: #191414;
   color: #fff;
   border: none;
@@ -129,4 +126,20 @@ input.header2:hover {
   align-self: center;
   margin-top: 10rem 0;
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .main-container {
+    gap: 1rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .header2 ,
+  input.header2 {
+    font-size: 1.2rem;
+  }
 }
