@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Login.css"
 
 export default function Login({ token, setToken }) {
@@ -7,6 +7,7 @@ export default function Login({ token, setToken }) {
   const REDIRECT_URI = 'http://localhost:5173/';
   const URL = 'https://accounts.spotify.com/authorize';
   const RESPONSE_TYPE = 'token';
+  const SCOPES = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -30,7 +31,7 @@ export default function Login({ token, setToken }) {
       {!token ? (
         <a
           className="login-btn"
-          href={`${URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+          href={`${URL}?client_id=${CLIENT_ID}&scope=${SCOPES}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
         >
           Login
         </a>

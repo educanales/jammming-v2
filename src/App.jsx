@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Playlist from './components/Playlist'
 import ResultsList from './components/ResultsList'
@@ -17,21 +17,21 @@ function App() {
   }
 
   const searchTracks = async (e) => {
-    e.preventDefault();  
+    e.preventDefault();
     const headers = {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
         },
-    };  
+    };
     const url = new URL('https://api.spotify.com/v1/search');
     url.searchParams.append('q', searchItem);
-    url.searchParams.append('type', 'track');  
+    url.searchParams.append('type', 'track');
     try {
         const response = await fetch(url, headers);
         if (!response.ok) {
-            throw new Error('La solicitud no se pudo completar correctamente.');
-        }  
+          throw new Error('La solicitud no se pudo completar correctamente.');
+        }
         const data = await response.json();
         const tracks = data.tracks.items.map(track => ({
           id: track.id,
@@ -49,18 +49,18 @@ function App() {
   const handleAddPlaylist = id => {
     const selectedTrack = trackResults.filter((track) =>
       track.id === id
-    );
+    )
     if (!playlist.find(item => item.id === id)) {
       setPlaylist([ ...playlist, ...selectedTrack ]);
     }
-  }
+  };
 
   const handleDeleteFromPlaylist = id => {
     const selectedTrack = playlist.filter((track) =>
       track.id !== id
-    );
+    )
     setPlaylist(selectedTrack);
-  }
+  };
 
   return (
     <>      
@@ -77,7 +77,9 @@ function App() {
         />
         <Playlist 
           playlist={playlist}
+          setPlaylist={setPlaylist}
           handleDeleteFromPlaylist={handleDeleteFromPlaylist}
+          token={token}
         />
       </main>
     </>

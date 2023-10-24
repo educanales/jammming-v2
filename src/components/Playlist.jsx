@@ -1,10 +1,38 @@
 import { useState } from "react"
 
-export default function Playlist({ playlist, handleDeleteFromPlaylist }) {
+export default function Playlist({ playlist, setPlaylist, handleDeleteFromPlaylist, token }) {
   const [ playlistName, setPlaylistName ] = useState('Playlist Name');
 
   const handleNameChange = e => {
     setPlaylistName(e.target.value);
+  }
+
+  const handleSavePlaylist = (e) => {
+    e.preventDefault();
+    const headers = { Authorization: `Bearer ${token}` };
+    const uriTracks = playlist.map(track => track.uri);
+    let userId;
+    
+    fetch('https://api.spotify.com/v1/me', {headers: headers}
+    ).then(response => response.json()
+    ).then(jsonResponse => {
+      userId = jsonResponse.id;
+      fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+        headers: headers,
+        method: 'POST',
+        body: JSON.stringify({name: playlistName}),
+      }).then(response => response.json()
+      ).then(jsonResponse => {
+        const playlistId = jsonResponse.id;
+        fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, {
+          headers: headers,
+          method: 'POST',
+          body: JSON.stringify({uris: uriTracks}),
+        });
+      });
+    });
+    setPlaylist([]);
+    setPlaylistName('Playlist Name');
   }
 
   const list = playlist.map(track =>
@@ -21,7 +49,7 @@ export default function Playlist({ playlist, handleDeleteFromPlaylist }) {
         </button>
       </div>
     </div>
-    );
+  );
 
   return (
     <div className="container">
@@ -34,7 +62,12 @@ export default function Playlist({ playlist, handleDeleteFromPlaylist }) {
         onBlur
       /> 
       {list}
-      <button className="save-btn">Save to Spotify</button>
+      <button
+        className="save-btn"
+        onClick={handleSavePlaylist}
+      >
+        Save to Spotify
+      </button>
     </div>
   )
 }
