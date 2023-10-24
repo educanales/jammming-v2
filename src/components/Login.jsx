@@ -4,7 +4,7 @@ import "./Login.css"
 export default function Login({ token, setToken }) {
 
   const CLIENT_ID = '843b653d28bf43c9844a6b8b38a93874';
-  const REDIRECT_URI = 'https://velvety-kheer-f7a508.netlify.app';
+  const REDIRECT_URI = 'https://edu-jammming.netlify.app/';
   const URL = 'https://accounts.spotify.com/authorize';
   const RESPONSE_TYPE = 'token';
   const SCOPES = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
