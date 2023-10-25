@@ -58,8 +58,8 @@ export default function Playlist({ playlist, setPlaylist, handleDeleteFromPlayli
         type="text"
         value={playlistName}
         onChange={handleNameChange}
-        onFocus
-        onBlur
+        // onFocus
+        // onBlur
       /> 
       {list}
       <button
